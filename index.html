@@ -1,41 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Code Generator</title>
-<style>
-  body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f4f4f9; }
-  .box { text-align: center; max-width: 500px; padding: 20px; }
-  textarea { width: 100%; height: 80px; padding: 10px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; }
-  button { margin-top: 10px; padding: 10px 24px; font-size: 1rem; background: #0066cc; color: #fff; border: none; border-radius: 20px; cursor: pointer; }
-  #status { margin-top: 15px; color: #333; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="box">
-  <h2>AI Code Generator</h2>
-  <textarea id="prompt" placeholder="Describe the webpage you want..."></textarea><br>
-  <button onclick="submitPrompt()">Generate &amp; Deploy</button>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<main class="card">
+  <div class="badge">⚡ Prompt → Live Website</div>
+  <h1>AI Code <span class="grad">Generator</span></h1>
+  <p class="sub">Describe any webpage. AI writes it, deploys it, and emails you the live link.</p>
+  <div class="chips">
+    <button class="chip" data-prompt="A memory card matching game with fruit emojis, flip animations and a win message">🃏 Memory game</button>
+    <button class="chip" data-prompt="A BMI calculator with color-coded results and smooth animations">💪 BMI calculator</button>
+    <button class="chip" data-prompt="A pomodoro timer with start, pause and reset, dark theme with neon accents">⏱ Pomodoro timer</button>
+    <button class="chip" data-prompt="A landing page for a coffee shop with menu section and contact form">☕ Coffee shop</button>
+  </div>
+  <textarea id="prompt" rows="3" placeholder="e.g. A weather dashboard with animated icons and a 5-day forecast..."></textarea>
+  <button id="go" class="btn"><span id="btn-label">Generate &amp; Deploy</span></button>
+  <ol id="steps" class="steps hidden">
+    <li data-step="1"><i></i>Prompt sent to AI</li>
+    <li data-step="2"><i></i>Writing your code</li>
+    <li data-step="3"><i></i>Pushing to GitHub</li>
+    <li data-step="4"><i></i>Deploying on Vercel</li>
+    <li data-step="5"><i></i>Sending email with live link</li>
+  </ol>
   <p id="status"></p>
-</div>
-<script>
-  const WEBHOOK_URL = 'https://framing-guided-maintenance-assure.trycloudflare.com/webhook/generate-code';
-
-  async function submitPrompt() {
-    const prompt = document.getElementById('prompt').value;
-    const status = document.getElementById('status');
-    if (!prompt) { status.textContent = 'Please type a prompt first.'; return; }
-    status.textContent = 'Sending... this may take a moment.';
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt })
-      });
-      status.textContent = 'Request sent! Check your email in a few minutes for the deployed link.';
-    } catch (e) {
-      status.textContent = 'Error: ' + e.message;
-    }
-  }
-</script>
+</main>
+<script src="app.js"></script>
 </body>
 </html>
