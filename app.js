@@ -1,4 +1,4 @@
-const WEBHOOK_URL = 'https://framing-guided-maintenance-assure.trycloudflare.com/webhook/generate-code';
+const WEBHOOK_URL = 'https://billing-managing-gibraltar-nutrition.trycloudflare.com/webhook/generate-code';
 
 const el = (id) => document.getElementById(id);
 
