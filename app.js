@@ -1,4 +1,4 @@
-const WEBHOOK_URL = 'https://billing-managing-gibraltar-nutrition.trycloudflare.com/webhook/generate-code';
+const WEBHOOK_URL = 'https://stanford-firewall-wisdom-forbes.trycloudflare.com/webhook/generate-code';
 
 const el = (id) => document.getElementById(id);
 
